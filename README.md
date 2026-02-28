@@ -1,6 +1,6 @@
 # 小红书笔记数据分析
 
-分析小红书平台上的笔记数据，生成深度的商业分析报告，包括关键词提取、聚类分析、痛点挖掘和商业洞察。
+一个 Claude Skill，用于分析小红书平台上的笔记数据，生成深度的商业分析报告。
 
 ## 功能
 
@@ -12,62 +12,33 @@
 
 ## 输出格式
 
-- **Markdown 报告**（默认）- 生成 `.md` 文件
-- **Word 报告**（可选）- 生成 `.docx` 文件（使用 pandoc 转换）
-
-## 依赖
-
-- Python 3.x
-- [uv](https://github.com/astral-sh/uv) - Python 包管理
-- pandas, jieba, scikit-learn, snownlp, openpyxl
-- [pandoc](https://pandoc.org/) - Markdown 转 Word（可选）
-
-## 安装
-
-```bash
-# 克隆项目
-git clone https://github.com/ligj1706/xiaohongshu-analyzer.git
-cd xiaohongshu-analyzer
-
-# 安装 Python 依赖
-uv pip install pandas jieba scikit-learn snownlp openpyxl numpy scipy joblib threadpoolctl
-
-# 可选：安装 pandoc（输出 Word 格式需要）
-# macOS: brew install pandoc
-# Windows: https://pandoc.org/installing.html
-# Linux: sudo apt install pandoc
-```
+- **Markdown 报告**（默认）
+- **Word 报告**（使用 pandoc 转换）
 
 ## 使用方法
 
-### 基本分析
+1. **加载 Skill**：在 Claude Code/Claude CLI 中使用此技能
+2. **提供数据**：提供一个包含小红书笔记数据的 Excel 文件（`.xlsx`）
+3. **获取分析**：自动生成完整的分析报告
 
-```bash
-# 激活虚拟环境
-source .venv/bin/activate
+### Excel 数据格式
 
-# 运行分析
-python analyze.py /path/to/your/xiaohongshu_data.xlsx
+| 列名 | 说明 | 示例 |
+|------|------|------|
+| 笔记标题 | 笔记的标题 | "分享一款超好用的面霜" |
+| 笔记内容 | 笔记正文内容 | "用了半瓶了，真的很好用..." |
+| 点赞数 | 点赞数量 | 1234 |
+| 收藏数 | 收藏数量 | 567 |
+| 评论数 | 评论数量 | 89 |
+| 分享数 | 分享数量 | 12 |
+
+### 示例命令
+
+```
+帮我分析这个小红书数据文件
 ```
 
-### 输出 Word 格式
-
-```bash
-python analyze.py /path/to/data.xlsx --format word
-```
-
-## 数据格式
-
-Excel 文件应包含以下列：
-
-| 列名 | 说明 |
-|------|------|
-| 笔记标题 | 笔记的标题 |
-| 笔记内容 | 笔记正文内容 |
-| 点赞数 | 点赞数量 |
-| 收藏数 | 收藏数量 |
-| 评论数 | 评论数量 |
-| 分享数 | 分享数量 |
+然后上传 Excel 文件即可。
 
 ## 示例报告
 
